@@ -3,6 +3,7 @@
 import {signIn, signOut, useSession} from "next-auth/react";
 import Link from "next/link";
 import {verifyJWT} from "@/lib/jwt";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 export const Navigation = () => {
 
@@ -13,7 +14,6 @@ export const Navigation = () => {
         const body = {
             accessToken: session.user.accessToken || "no-token"
         }
-
         const result = await fetch("/api/login", {
             method: "POST",
             body: JSON.stringify(body),
@@ -24,7 +24,6 @@ export const Navigation = () => {
         })
 
         console.log(await result.json())
-
 
     }
     const handleSign = async (event) => {
