@@ -6,7 +6,7 @@ import {verifyJWT} from "@/lib/jwt";
 
 export const Navigation = () => {
 
-    const {data : session, status, update} = useSession()
+    const {data : session, status} = useSession()
 
     const handleVerifyJWT = async () => {
 
@@ -53,6 +53,16 @@ export const Navigation = () => {
                         </Link>
                     </div>
                 </li>
+                <li className={'text-bold text-lg text-slate-700'}>
+                    <div className="group relative">
+                        <div
+                            className="absolute -inset-0.5 rounded bg-gradient-to-r from-blue-400 via-sky-500 to-blue-500 opacity-40 blur transition-all duration-500 group-hover:opacity-75 group-hover:-inset-1"/>
+                        <Link href={'/login'} className="relative rounded bg-white px-4 py-1.5 text-slate-700">
+                            Login
+                        </Link>
+                    </div>
+                </li>
+
                 : <li className={'text-bold text-lg text-slate-700'}>
                 <div className="group relative">
                     <div

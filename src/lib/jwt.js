@@ -6,14 +6,12 @@ export function signJwtAccessToken(payload, options)
     return jwt.sign(payload, secret_key , options)
 
 }
-
 export async function verifyJWT(token)
 {
     try
     {
-        console.log('try')
         const secret_key = process.env.SECRET_KEY;
-        return jwt.verify(token, secret_key)
+        return {verify : true, decoded : jwt.verify(token, secret_key)}
     }
     catch (error)
     {
