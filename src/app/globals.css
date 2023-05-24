@@ -1,27 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100;200;300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    ::selection {
+        color: azure;
+        background: #957FB1;
+    }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    :root {
+
+        --theme-50: 252, 247, 240;
+        --theme-100: 249, 236, 219;
+        --theme-200: 241, 215, 183;
+        --theme-300: 232, 187, 137;
+        --theme-400: 222, 151, 89;
+        --theme-500: 215, 123, 56;
+        --theme-600: 200, 101, 46;
+        --theme-700: 166, 79 ,40;
+        --theme-800: 133, 63 ,39;
+        --theme-900: 108, 54 ,34;
+        --theme-950: 36, 16 ,10;
+
+        --theme-font-50: 0, 0, 0;
+        --theme-font-100: 23, 23, 23;
+        --theme-font-200: 56, 56, 56;
+        --theme-font-300: 67, 67, 67;
+        --theme-font-400: 81, 81, 81;
+        --theme-font-500: 102, 102, 102;
+        --theme-font-600: 129, 129, 129;
+        --theme-font-700: 164, 164, 164;
+        --theme-font-800: 200, 200, 200;
+        --theme-font-900: 227, 227, 227;
+        --theme-font-950: 247, 247, 247;
+
+        --theme-body-50: 247, 247, 247;
+        --theme-body-100: 227, 227, 227;
+        --theme-body-200: 200, 200, 200;
+        --theme-body-300: 164, 164, 164;
+        --theme-body-400: 129, 129, 129;
+        --theme-body-500: 102, 102, 102;
+        --theme-body-600: 81, 81, 81;
+        --theme-body-700: 67, 67, 67;
+        --theme-body-800: 56, 56, 56;
+        --theme-body-900: 23, 23, 23;
+        --theme-body-950: 0, 0, 0;
+
+    }
 }
