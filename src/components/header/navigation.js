@@ -12,7 +12,7 @@ export const Navigation = () => {
     const handleVerifyJWT = async () => {
 
         const body = {
-            accessToken: session.user.accessToken || "no-token"
+            accessToken: session.user.token || "no-token"
         }
         const result = await fetch("/api/login", {
             method: "POST",
