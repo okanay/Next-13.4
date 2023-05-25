@@ -1,7 +1,11 @@
 'use client'
-import {signIn} from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
+import {joseDecodedToken} from "@/lib/api";
+import {useState} from "react";
 
 export default function LoginPag () {
+
+
 
     return <>
         <button onClick={() => {signIn("credentials")}}>

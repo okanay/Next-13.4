@@ -4,29 +4,14 @@ import {signIn, signOut, useSession} from "next-auth/react";
 import Link from "next/link";
 import {verifyJWT} from "@/lib/jwt";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+import {joseDecodedToken} from "@/lib/api";
 
 export const Navigation = () => {
 
     const {data : session, status} = useSession()
 
     if ( status === "loading") return <div className={'fixed w-screen h-screen bg-white z-[999] inset-0'}><p>Loading..</p></div>
-    const handleVerifyJWT = async () => {
 
-        const body = {
-            signedToken: session?.user?.signedToken || "no-token"
-        }
-        const result = await fetch("/api/verify", {
-            method: "POST",
-            body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        })
-
-        console.log(await result.json())
-
-    }
     const handleSign = async (event) => {
         event.preventDefault()
         const response = await signIn("credentials", {username: "jsmith", password: "1234"})

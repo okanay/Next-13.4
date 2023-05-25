@@ -1,6 +1,6 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {signJwtAccessToken, verifyJWT} from "@/lib/jwt";
+import {joseSignUserPayload} from "@/lib/jwt";
 
 const handler = NextAuth({
     providers: [
@@ -14,9 +14,9 @@ const handler = NextAuth({
                     password: credentials?.password
                 })
 
-                const user = {id: "1", name: "J Smith", email: "jsmith@example.com"}
-                const signedToken = await signJwtAccessToken(user)
-                return {signedToken}
+                const user = {id: "1", name: "J Smith", email: "jsmith@example.com", accessToken : "123456", role : "admin"}
+                const token = await joseSignUserPayload(user)
+                return {token}
             }
         })
     ],

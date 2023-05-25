@@ -1,21 +1,41 @@
-import jwt from "jsonwebtoken"
+import * as jose from 'jose'
 
-export function signJwtAccessToken(payload, options)
-{
+export async function joseSignUserPayload(payload) {
 
-    const secret_key = process.env.SECRET_KEY;
-    return jwt.sign(payload, secret_key , options)
+    const secret = new TextEncoder().encode(process.env.SECRET_KEY);
+    const alg = 'HS256';
 
-}
-export async function verifyJWT(token)
-{
-    try
-    {
-        const secret_key = process.env.SECRET_KEY;
-        return {verify : true, decoded : jwt.verify(token, secret_key)}
+    try {
+        const jwt = await new jose.SignJWT(payload)
+            .setProtectedHeader({alg})
+            .setIssuedAt()
+            .setIssuer('urn:example:issuer')
+            .setAudience('urn:example:audience')
+            .setExpirationTime('2h')
+            .sign(secret);
+
+        return jwt;
+
+    } catch (error) {
+        return {message: error, token: undefined}
     }
-    catch (error)
-    {
-        return {verify : false, decoded : undefined}
+}
+
+export async function joseVerifyUserPayload(jwt) {
+
+    const secret = new TextEncoder().encode(process.env.SECRET_KEY);
+
+    try {
+        const {payload, protectedHeader} = await jose.jwtVerify(jwt, secret, {
+            issuer: 'urn:example:issuer',
+            audience: 'urn:example:audience',
+        });
+
+        return {verify: true, payload: payload}
+
+    } catch (error) {
+        return {verify: false, payload: {}}
     }
 }
+
+
