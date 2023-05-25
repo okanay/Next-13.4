@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken"
 
 export function signJwtAccessToken(payload, options)
 {
+
     const secret_key = process.env.SECRET_KEY;
     return jwt.sign(payload, secret_key , options)
 
@@ -15,7 +16,6 @@ export async function verifyJWT(token)
     }
     catch (error)
     {
-        console.log(error)
-        return null
+        return {verify : false, decoded : undefined}
     }
 }

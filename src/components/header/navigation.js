@@ -9,12 +9,13 @@ export const Navigation = () => {
 
     const {data : session, status} = useSession()
 
+    if ( status === "loading") return <div className={'fixed w-screen h-screen bg-white z-[999] inset-0'}><p>Loading..</p></div>
     const handleVerifyJWT = async () => {
 
         const body = {
-            accessToken: session.user.signedToken || "no-token"
+            signedToken: session?.user?.signedToken || "no-token"
         }
-        const result = await fetch("/api/login", {
+        const result = await fetch("/api/verify", {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
